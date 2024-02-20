@@ -5,6 +5,8 @@
 #include "Vinyl.h"
 
 #define SDCARD_CS_PIN 10
+#define SDCARD_MOSI_PIN  11
+#define SDCARD_SCK_PIN   13
 #define PLAY_BUTTON_PIN 0
 
 bool isPlaying = false;
@@ -31,7 +33,8 @@ void setup() {
   mix.gain(1, 0.15);
 
   Serial.println("Initializing SD card...");
-
+  SPI.setMOSI(SDCARD_MOSI_PIN);
+  SPI.setSCK(SDCARD_SCK_PIN);
   if (!(SD.begin(SDCARD_CS_PIN))) {
     while (1) {
       Serial.println("Unable to access the SD card");
