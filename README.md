@@ -31,7 +31,7 @@ Once the installation our program is complete, you can run the simulator using t
 
 ```bash
 # Start the simulator from the command line
-python GUI.py
+python3 GUI.py
 ```
 
 If you have special program to run the python, such as VSCODE, you can open the GUI.py and run the simulator directly.
