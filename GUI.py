@@ -148,8 +148,8 @@ class ArduinoInterface:
     def calculate_metal_gradient(self, color):
         """Calculate a gradient color for the metal appearance."""
         # Adjust these values based on your preference
-        gradient_factor = 0.1
-        highlight_factor = 1.15
+        gradient_factor = 0.4
+        highlight_factor = 2
 
         try:
             r, g, b = self.hex_to_rgb(color)

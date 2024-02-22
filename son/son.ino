@@ -9,8 +9,6 @@
 #define SDCARD_SCK_PIN   13
 #define PLAY_BUTTON_PIN 0
 
-bool isPlaying = false;
-
 Vinyl vinyl;
 
 AudioOutputI2S out;
@@ -60,10 +58,9 @@ void loop() {
   }
 
 
-  if (playButtonState && !isPlaying) {
+  if (playButtonState && audioSD.isPlaying()==false) {
     Serial.println("Start playing");
-    isPlaying = true;
-    Serial.printf("%d, 'play'\n", isPlaying);
+    Serial.printf("%d, 'play'\n", !audioSD.isPlaying());
     delay(800);
     audioSD.play("song.WAV");
     patchCord2.connect(mix, 0, out, 0);
@@ -72,10 +69,9 @@ void loop() {
   }
 
 
-  else if (playButtonState && isPlaying) {
+  else if (playButtonState && audioSD.isPlaying()==true) {
     Serial.println("Stop playing");
-    isPlaying = false;
-    Serial.printf("%d, 'play'\n", isPlaying);
+    Serial.printf("%d, 'play'\n", !audioSD.isPlaying());
     delay(100);
     audioSD.stop();
     patchCord2.disconnect();
